@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<title>HomePage</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250727114852">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+			</div>
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<h1 class="page__title">План лікування</h1>
+				<form id="dataForm" class="page__form form">
+					<div class="form__wrapper">
+						<div class="form__group">
+							<label for="lastName">Прізвище:</label>
+							<input type="text" id="lastName" name="lastName" required placeholder="Введіть прізвище">
+						</div>
+						<div class="form__group">
+							<label for="firstName">Ім'я:</label>
+							<input type="text" id="firstName" name="firstName" required placeholder="Введіть ім'я">
+						</div>
+						<div class="form__group">
+							<label for="middleName">ПБ:</label>
+							<input type="text" id="middleName" name="middleName" placeholder="Введіть по батькові">
+						</div>
+						<div class="form__group-date">
+							<label>Дата:</label>
+							<div class="form__date-group">
+								<select id="birthDay" required>
+									<option value="" disabled selected>День</option>
+								</select>
+								<select id="birthMonth" required>
+									<option value="" disabled selected>Місяць</option>
+									<option value="1">Січень</option>
+									<option value="2">Лютий</option>
+									<option value="3">Березень</option>
+									<option value="4">Квітень</option>
+									<option value="5">Травень</option>
+									<option value="6">Червень</option>
+									<option value="7">Липень</option>
+									<option value="8">Серпень</option>
+									<option value="9">Вересень</option>
+									<option value="10">Жовтень</option>
+									<option value="11">Листопад</option>
+									<option value="12">Грудень</option>
+								</select>
+								<select id="birthYear" required>
+									<option value="" disabled selected>Рік</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form__group group--wrap">
+						<div class="form__list">
+							<table>
+								<thead>
+									<tr class="form__list-header">
+										<th>Етап №</th>
+										<th>Опис процедури</th>
+										<th>Кількість</th>
+										<th>Ціна (грн)</th>
+										<th>Вартість (грн)</th>
+										<th>Дії</th>
+									</tr>
+								</thead>
+								<tbody class="list"></tbody>
+							</table>
+						</div>
+						<button type="button" data-popup="#popup">Додати етап</button>
+						<div class="total-cost" id="total-cost">Загальна сума: 0.00 грн</div>
+					</div>
+					<div class="form__delet">
+						<button type="button" class="clear-data-btn">Очистити</button>
+					</div>
+					<div class="form__btn">
+						<button type="submit">Зберегти PDF</button>
+					</div>
+				</form>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20250727114852"></script>
+	<div id="popup" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close">
+					<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path opacity="0.850056" d="M1.73333 1.48883L21.5469 21.0288" stroke="inherit" stroke-linecap="square" />
+						<path opacity="0.850056" d="M21.2667 1.48883L1.45309 21.0288" stroke="inherit" stroke-linecap="square" />
+					</svg>
+				</button>
+				<div class="popup__gallery gallery">
+					<ul class="gallery__list list-gallery">
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Пульпіт , обробка та пломбування 1 кореневого каналу зуба ,  постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="5000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Пульпіт , обробка та пломбування 2 кореневого каналу  зуба, постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="6500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Пульпіт , обробка та пломбування 3-4 кореневого каналу зуба , постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="7500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом /  Періодонтит , обробка та пломбування 1 кореневого каналу  зуба, постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="5000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом /  Періодонтит , обробка та пломбування 2 кореневого каналу  зуба, постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="6500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом /  Періодонтит , обробка та пломбування 3-4 кореневого каналу  зуба, постійна фотополімерна пломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="7500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Початковий-Поверхневий карієс, обробка та постійна фотополімернапломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="1500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Середній карієс, обробка та постійна фотополімернапломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="1700" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Лікування під Мікроскопом / Глибокий карієс, обробка та постійна фотополімернапломба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="2000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Анестезія"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="200" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Відбілювання зубів доманшє , виготовленння капи ціна відсутнє">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="0" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Професійна гігієна порожнини рота, комплекс ультразвук+порошок "></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="2000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Видалення зубного каменю (ультразвукова чистка) 2 щелепи"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="1000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Видалення зуба просте"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Видалення зуба складне">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="800" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Неповне прорізування зуба мудрості"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="2000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Атипове ( складне ) видалення зуба мудрості"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="2500" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Керамічна коронка ( Вінір )"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="0" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Цирконієва коронка">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="5000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Металокерамічної коронки"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="3000" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Фіксація постійної коронки 1 зуб"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="350" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Зняття старої коронки, металокераміка , цирконій"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="400" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Зняття металевих коронок"></div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="200" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Кюретаж пародонтальних кишень 1 зуба">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="300" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Тимчасова коронка 3 д">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="150" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+						<li class="list-gallery__item item">
+							<div class="item__number"></div>
+							<div class="item__opis"><input type="text" class="treatment-description" value="Фіксація тимчасової коронки">
+							</div>
+							<div class="item__count"><input type="number" class="treatment-quantity" value="1" min="1" placeholder="Кількість"></div>
+							<div class="item__price"><input type="number" class="treatment-price" value="100" min="0" placeholder="Ціна (грн)"></div>
+							<button type="button" class="add-treatment">Додати</button>
+						</li>
+
+					</ul>
+					<div class="additional-descriptions">
+						<h3 class="additional-descriptions__title">Додаткові описи</h3>
+						<ul class="additional-descriptions__list">
+							<li class="additional-descriptions__item">
+								<div class="additional-descriptions__text">
+									Загальна вартість ( під ключ ) : стерильний набір, анестезія
+									аплікаційна, ін’єкційна, коффердам, фотополімерна
+									пломба
+								</div>
+								<input type="number" class="additional-price-input" placeholder="Ціна" min="0" step="0.01">
+								<button type="button" class="add-treatment">Додати</button>
+							</li>
+							<li class="additional-descriptions__item">
+								<div class="additional-descriptions__text">
+									Загальна вартість ( під ключ ) : стерильний набір, анестезія аплікаційна, ін’єкційна, коффердам,
+									мед.обробка кореневого каналу, пломбування кореневого каналу. Постійна фотополімерна пломба
+								</div>
+								<input type="number" class="additional-price-input" placeholder="Ціна" min="0" step="0.01">
+								<button type="button" class="add-treatment">Додати</button>
+							</li>
+						</ul>
+					</div>
+					<button type="button" id="addTreatment" style="display: none;">Додати до списку</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
